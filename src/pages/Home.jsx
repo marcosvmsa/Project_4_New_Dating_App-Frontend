@@ -1,31 +1,50 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import '../assets/CSS/Home.css';
-import Nav from '../components/Nav.jsx';
-import AuthModal from '../components/AuthModal.jsx';
+import Nav from '../components/Nav';
+import AuthModal from '../components/AuthModal';
+import {Button} from '@mantine/core';
 
-function Home() {
-  const [showModal, setShowModal] = useState(false);
+const Home = () => {
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const authToken = false;
 
   const handleClick = () => {
-    setShowModal(true);
+    setShowRegisterForm(true);
+    setIsSignUp(true);
   };
 
   return (
     <div className="overlay">
-      <Nav minimal={false} authToken={authToken} />
-      <div className="home">
-        <h1>Next Dating</h1>
-        <button type="button" className="firstButton" onClick={handleClick}>
-          {authToken ? 'Singn out' : 'Create Account'}
-        </button>
+      <Nav minimal={false}
+        authToken={authToken}
+        setShowRegisterForm={setShowRegisterForm}
+        showRegisterForm={showRegisterForm}
+        setIsSignUp={setIsSignUp}
+      />
 
-        {showModal && <AuthModal setShowModal={setShowModal} />}
+      <div className="home">
+        <h1 className="title" >Next Date</h1>
+
+
+        <Button className="firstButton"
+          disabled={showRegisterForm}
+          variant="outline"
+          onClick={handleClick}>
+          {authToken ? 'Singnout' : 'Create Account'}
+        </Button>
+
+        {showRegisterForm && <AuthModal
+          onClick={handleClick}
+          setShowRegisterForm={setShowRegisterForm}
+          setIsSignUp={setIsSignUp}
+          isSignUp={isSignUp}
+        />}
 
       </div>
     </div>
   );
-}
+};
 
 export default Home;

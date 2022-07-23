@@ -1,6 +1,7 @@
 html, body{
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .primary-button{
@@ -14,8 +15,4 @@ html, body{
 
 .primary-button:hover{
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 72));
-}
-
-body{
-  text-align: center;
 }

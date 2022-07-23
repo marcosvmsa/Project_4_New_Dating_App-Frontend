@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TextInput, Checkbox, Button, Group, Box,
 } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import {useForm} from '@mantine/form';
 
 function Demo() {
   const form = useForm({
@@ -17,7 +17,7 @@ function Demo() {
   });
 
   return (
-    <Box sx={{ maxWidth: 300 }} mx="auto">
+    <Box sx={{maxWidth: 300}} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <TextInput
           required
@@ -29,7 +29,7 @@ function Demo() {
         <Checkbox
           mt="md"
           label="I agree to sell my privacy"
-          {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+          {...form.getInputProps('termsOfService', {type: 'checkbox'})}
         />
 
         <Group position="right" mt="md">
